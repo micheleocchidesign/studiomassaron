@@ -1,0 +1,635 @@
+:root {
+    /* IL COLORE GUIDA */
+    --accent: #7db6aa;          /* Verde Logo/Dettagli */
+    --accent-dark: #579A8B;     /* Verde per Hover/Bottoni */
+    
+    /* I NEUTRI */
+    --text: #2d3a3a;            /* Quasi Nero (per testi e titoli) */
+    --text-light: #586062;      /* Grigio per testi secondari */
+    
+    /* GLI SFONDI */
+    --bg-light: #f8faf9;        /* Sfondo principale (pulito) */
+    --bg-soft: #ebf0ee;         /* Sfondo sezioni/card (delicato) */
+    --border: #bfc9c5;          /* Bordi e linee */
+
+    /* FONTS */
+    --font-headline: 'Yeseva One', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Base Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { 
+    font-family: var(--font-body); 
+    background-color: var(--bg-light); 
+    color: var(--text);
+}
+
+/* Impedisce alle sezioni di finire sotto la navbar quando si clicca sui link */
+section[id] {
+    scroll-margin-top: 70px; /* Altezza navbar (80px) + 20px di respiro */
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.container-small { max-width: 800px; }
+.section { padding: 80px 0; }
+.section-alt { background-color: var(--bg-soft); }
+.text-primary { color: var(--primary); }
+
+/* Typography */
+h1, h2, h3 { font-family: var(--font-headline); line-height: 1.2; }
+h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+.body-lg { font-size: 1.125rem; margin-bottom: 1rem; }
+
+/* Navbar */
+.navbar { 
+    position: fixed; top: 0; width: 100%; height: 80px; 
+    z-index: 1000; background: white; 
+    border-bottom: 1px solid var(--accent); 
+    display: flex; align-items: center; 
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spazio tra simbolo e testo */
+    text-decoration: none;
+    height: 100%;
+}
+
+.logo-svg {
+    height: 45px; /* Dimensione ideale per navbar da 80px */
+    width: auto;  /* Mantiene le proporzioni originali */
+    display: block;
+}
+
+/* Facciamo in modo che il colore dell'SVG segua la variabile del progetto */
+.logo-svg .st0 {
+    fill: var(--accent);
+    transition: fill 0.3s ease;
+}
+
+/* Opzionale: cambia colore al passaggio del mouse su tutto il logo */
+.nav-logo:hover .logo-svg .st0 {
+    fill: var(--accent-dark);
+}
+
+.logo-text {
+    font-family: var(--font-headline);
+    color: var(--accent);
+    font-size: 1.4rem; /* Leggermente ridotto per equilibrio visivo */
+    white-space: nowrap;
+    pointer-events: none;
+}
+.nav-links { list-style: none; display: flex; gap: 2rem; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+}
+
+/* Hero */
+.hero { 
+    height: 100vh; 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    /* Rimuoviamo overflow: hidden per permettere la visibilità dello sfondo fisso */
+    padding-top: 80px; 
+}
+.hero-bg { 
+    position: absolute; 
+    inset: 0; 
+    z-index: -1; 
+    /* Creiamo un contenitore che ritaglia l'immagine fissa */
+    clip-path: inset(0 0 0 0); 
+}
+.hero-bg img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    /* L'elemento magico: l'immagine si ancora alla finestra del browser */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+.hero-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.6); }
+.hero-content { max-width: 800px; }
+.hero-content h1 { font-size: 3rem; color: var(--bg-light); margin-bottom: 2rem; font-weight: 400 !important; }
+/* IL NOME DELLO STUDIO: Più piccolo e colorato con l'accento */
+.hero-brand {
+    display: block; /* Va a capo da solo */
+    font-size: 1.5rem; /* Molto più piccolo della tagline */
+    color: var(--accent); /* Il tuo verde #7db6aa */
+    text-transform: uppercase;
+    font-family: var(--font-body); /* Usiamo Inter qui per contrasto col Serif */
+    font-weight: 200;
+    margin-bottom:20px;
+    border-bottom: 1px solid var(--accent); /* Linea sottile sotto il nome */
+    
+}
+
+/* LA TAGLINE: Grande e con Yeseva One */
+.hero-tagline {
+    display: block;
+    font-family: var(--font-headline); /* Yeseva One */
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Si adatta alla grandezza dello schermo */
+    font-weight: 400;
+}
+.hero-actions { display: flex; gap: 1.5rem; }
+
+#services h2{
+    color: var(--accent);
+}
+
+/* Bento Grid */
+.bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+.js-reveal-card{opacity: 1 ;}
+.card {
+    background-color: white ;
+    padding: 2rem; 
+    border-top: 1px solid var(--accent); transition: 0.4s;
+    color: var(--text);)
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.card h3 {
+    color: var(--accent);
+    font-size: 1.4rem;
+}
+.card p{
+    margin-top:10px;
+    color: var(--text-light);
+    line-height: 1.4rem;
+    font-size: .9rem;
+}
+.card span { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; display: block; }
+.card-span-8 { grid-column: span 8; }
+.card-span-4 { grid-column: span 4; }
+.card-span-6 { grid-column: span 6; }
+
+/* Components */
+.btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 200; cursor: pointer; border: none; text-decoration: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.1rem;}
+.btn-primary {
+    background: var(--accent); 
+    color: white;
+}
+.btn-primary:hover { 
+    background: var(--accent-dark); 
+}
+.btn-primary-container { background: var(--primary-container); color: var(--primary); }
+.btn-outline {
+    border: 1px solid white; 
+    color: white; 
+}
+.btn-outline:hover { 
+    border: 1px solid var(--accent); 
+    color: var(--accent);
+}
+.w-full { width: 100%; }
+
+/* About */
+.section-about-centered {
+    background-color: var(--accent);
+    position: relative; /* Necessario per posizionare l'immagine sopra lo sfondo */
+    overflow: hidden;    /* Evita che l'immagine esca dai bordi */
+    color: var(--bg-light);
+    text-align: center;
+}
+
+/* L'immagine in trasparenza */
+.section-about-centered::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Inserisci qui il link alla tua immagine (es. texture, ufficio, o pattern) */
+    background-image: url('https://images.unsplash.com/photo-1530177150700-84cd9a3b059b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    mix-blend-mode: multiply;
+    
+    /* QUI REGOLI LA TRASPARENZA (0.1 è il 10%) */
+    opacity: 0.15; 
+    
+    z-index: 1; /* Va sotto il testo */
+}
+
+.section-about-centered .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Sopra l'immagine */
+}
+
+.section-about-centered .content-wrapper {
+    max-width: 900px; /* Evita che le righe di testo diventino troppo lunghe e faticose da leggere */
+    margin: 0 auto;
+    z-index: 3;
+}
+
+.section-about-centered h2 {
+    color: var(--bg-light) !important; /* Forza il titolo in bianco */
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.section-about-centered p {
+    color: var(--bg-light);
+    opacity:1; /* Un leggero tocco di trasparenza per i paragrafi li rende più eleganti */
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* Se decidi di tenere l'immagine, apparirà sopra il testo così: */
+.section-about-centered .image-wrapper {
+    max-width: 400px;
+    margin-bottom: 3rem;
+}
+
+
+/* Accordion (FAQ) */
+#faq{
+    background-color: var(--text);
+    color: var(--bg-light);
+}
+#faq h2{
+    color: var(--accent);
+}
+.accordion {
+    margin-top: 3rem;
+}
+
+.accordion-item {
+    background: var(--bg-light); /* Usiamo il fondo pulito */
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    border-radius: 1rem; /* Arrotondamento coerente con le card */
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Effetto hover sull'intero blocco */
+.accordion-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Lo stato aperto dell'accordion */
+.accordion-item[open] {
+    border-color: var(--accent);
+    background: #ffffff; /* Leggero stacco cromatico quando è aperto */
+}
+
+.accordion-item summary {
+    list-style: none; /* Rimuove il triangolo standard */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    color: var(--text);
+    transition: color 0.3s ease;
+}
+
+/* Rimuove il triangolo su Safari/Chrome */
+.accordion-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-item summary:hover {
+    color: var(--accent);
+}
+
+.accordion-content {
+    padding: 0 1.5rem 1.5rem 1.5rem; /* Padding solo ai lati e sotto */
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Animazione dell'icona "+" o "freccia" */
+.accordion-item summary .material-symbols-outlined {
+    color: var(--accent);
+    transition: transform 0.3s ease;
+    font-variation-settings: 'wght' 300; /* Più sottile ed elegante */
+}
+
+.accordion-item[open] summary .material-symbols-outlined {
+    transform: rotate(180deg); /* La freccia si gira */
+}
+/* Stilizzazione liste interne alle FAQ */
+.accordion-content ul {
+    list-style: none; /* Rimuove i pallini di default */
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.accordion-content li {
+    position: relative;
+    padding-left: 1.5rem; /* Spazio per l'icona personalizzata */
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+/* Creazione del puntatore personalizzato (un trattino elegante) */
+.accordion-content li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6rem; /* Allineamento verticale rispetto al testo */
+    width: 8px;
+    height: 2px;
+    background-color: var(--accent); /* Il tuo verde #7db6aa */
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Form */
+.contact-info h2 { color: var(--accent); margin-bottom: 2rem;}
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+/* Stilizzazione icone contatti */
+.contact-row .material-symbols-outlined {
+    background: var(--bg-soft);
+    color: var(--accent);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-size: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+.contact-row strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+}
+
+.contact-row p {
+    color: var(--text-light);
+}
+/* Stile per i link dei contatti */
+.contact-row.clickable {
+    text-decoration: none; /* Rimuove sottolineatura */
+    color: inherit;        /* Mantiene il colore del testo definito */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-row.clickable:hover {
+    transform: translateX(5px); /* Leggera animazione verso destra */
+}
+
+.contact-row.clickable:hover .material-symbols-outlined {
+    background-color: var(--accent); /* L'icona si colora al passaggio */
+    color: white;
+    border-color: var(--accent);
+}
+
+.contact-row.clickable:hover p {
+    color: var(--accent); /* Il testo dell'indirizzo/email diventa verde */
+}
+
+/* La Card del Form */
+.contact-card { 
+    background: #ffffff; 
+    padding: 3rem; 
+    border-top: 1px solid var(--accent); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03); /* Ombra molto morbida */
+}
+
+.contact-card h3 {
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+}
+
+.contact-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.25rem; 
+}
+
+/* Stilizzazione Input e Textarea */
+.contact-form input, 
+.contact-form textarea { 
+    padding: 1rem 1.25rem;
+    border: none;
+    border-bottom: 1px solid var(--accent); 
+    background: var(--bg-light); 
+    font-family: inherit; 
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: var(--text);
+}
+
+/* Effetto Focus (quando l'utente clicca nel campo) */
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-dark);
+    background: #ffffff;
+}
+
+/* Placeholder più discreto */
+.contact-form ::placeholder {
+    color: #a0a0a0;
+}
+
+/* Bottone Invio */
+.contact-card .btn-primary {
+    margin-top: 1rem;
+    padding: 1.25rem;
+    font-weight: 600;
+}
+/* Layout Grids */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.grid-founder { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+/* Stile per il contenitore dell'immagine */
+.founder-image {
+    width: 100%;
+    max-width: 500px; /* Impedisce all'immagine di diventare troppo grande */
+    justify-self: center; /* La tiene centrata nella sua colonna */
+}
+/* Stile per l'immagine vera e propria */
+.founder-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4; /* Forza una proporzione verticale elegante (tipo ritratto) */
+    object-fit: cover;   /* Taglia l'immagine per riempire lo spazio senza distorcerla */
+    border-radius: 1rem; /* Arrotonda gli angoli come nelle altre sezioni */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Aggiunge profondità */
+}
+.rounded-img { width: 100%; border-radius: 1rem; }
+.founder-info h2 { color: var(--accent); }
+.founder-info p { color: var(--text); line-height: 1.4; margin-bottom: 1rem; }
+.experience-badge { background: var(--primary); color: white; padding: 1.5rem; border-radius: 0.5rem; display: inline-block; margin-top: -2rem; position: relative; }
+
+/* Footer */
+/* FOOTER REVISIONATO */
+.footer {
+    background: var(--text); /* Il tuo colore quasi nero #2d3a3a */
+    color: white;
+    padding: 80px 0 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Più spazio alla parte istituzionale */
+    gap: 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 50px;
+}
+
+.footer-logo {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-professional-info p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 400px;
+}
+
+/* Colonne Info */
+.footer-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.footer-info-row strong {
+    display: block;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+}
+
+.footer-info-row p, 
+.footer-info-row a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-info-row a:hover {
+    color: var(--accent);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    padding-top: 30px;
+}
+
+.footer-bottom-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-legal-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-legal-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-legal-links a:hover {
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .footer-bottom-wrapper {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-2, .grid-founder, .footer-grid { grid-template-columns: 1fr; flex-direction: column; gap: 2rem; }
+    .card-span-8, .card-span-4, .card-span-6 { grid-column: span 12; }
+    .nav-links { display: none; }
+    .menu-toggle {
+        display: block; /* Visibile solo su mobile */
+    }
+
+    .nav-links {
+        display: none; /* Nascondi menu standard */
+        flex-direction: column;
+        position: absolute;
+        top: 80px; /* Sotto la navbar */
+        left: 0;
+        width: 100%;
+        background: var(--bg-light);
+        padding: 2rem;
+        gap: 2.5rem;
+        border-bottom: 1px solid var(--accent-dark);
+        z-index: 999;
+    }
+
+    .nav-links a {
+        color: var(--accent);
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    .nav-links a:hover {
+        color: var(--accent-dark);
+    }
+
+    /* Classe che attiveremo via JS */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+    }
+}
