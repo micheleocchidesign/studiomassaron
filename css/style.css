@@ -632,4 +632,31 @@ h2 { font-size: 2rem; margin-bottom: 1.5rem; }
     .nav-links li {
         text-align: center;
     }
+
+    .hero-actions {
+        flex-direction: column; /* Dispone i bottoni uno sotto l'altro */
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%; /* I bottoni occupano tutta la larghezza per facilitare il tocco */
+        text-align: center;
+    }
+    .contact-card {
+        padding: 1.5rem; /* Riduciamo il padding interno (era 3rem) */
+        width: 100%;     /* Forza la card a stare nel contenitore */
+        margin: 0;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-form input, 
+    .contact-form textarea {
+        width: 100%;    /* Assicura che gli input non escano dalla card */
+        max-width: 100%;
+        box-sizing: border-box; /* Include padding e bordi nel calcolo della larghezza */
+    }
 }
