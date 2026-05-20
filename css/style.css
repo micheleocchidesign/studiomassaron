@@ -13,7 +13,7 @@
     --border: #bfc9c5;          /* Bordi e linee */
 
     /* FONTS */
-    --font-headline: 'Yeseva One', serif;
+    --font-headline: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 }
 
@@ -135,10 +135,10 @@ h2 { font-size: 2rem; margin-bottom: 1.5rem; }
     
 }
 
-/* LA TAGLINE: Grande e con Yeseva One */
+/* LA TAGLINE: Grande */
 .hero-tagline {
     display: block;
-    font-family: var(--font-headline); /* Yeseva One */
+    font-family: var(--font-headline); /* Playfair Display */
     font-size: clamp(2.5rem, 5vw, 4rem); /* Si adatta alla grandezza dello schermo */
     font-weight: 400;
 }
